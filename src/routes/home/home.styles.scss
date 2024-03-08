@@ -1,0 +1,28 @@
+.home{
+
+    width: 100%;
+    margin: 5rem auto;
+    padding: 1rem;
+    padding-right: 10rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+
+    @media (max-width: 948px)
+    {
+        padding-right: 1rem;
+    }
+
+    @media (max-width: 512px)
+    {
+        flex-direction: column;
+    }
+
+    &:last-child{
+
+        align-self:last baseline;
+    }
+}

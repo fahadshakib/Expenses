@@ -1,0 +1,58 @@
+.user{
+    width: 100%;
+    margin: .4rem auto;
+    padding: .8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    &--photo {
+
+      display: block;
+      width: 14rem;
+      height: 14rem;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 5rem;
+      padding: .2rem;
+      outline: 1px dotted #063649;
+    }
+  
+    &__details {
+
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: .4rem 0;
+      padding: .8rem;
+
+      &--icon {
+        height: 1.8rem;
+        width: 1.8rem;
+        margin-right: .8rem;
+      }
+
+      &--name,
+      &--mail,
+      &--date{
+        
+        font-size: 1.6rem;
+        color: #092d33;
+        font-weight: 500;
+        text-transform: lowercase;
+        letter-spacing: .14rem;
+      }
+
+      &--mail, &--date{
+
+        font-size: 1.28rem;
+      }
+
+      &--name{
+        font-family: "Madimi One", sans-serif;
+      }
+    }
+
+}

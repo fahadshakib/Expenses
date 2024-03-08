@@ -1,0 +1,58 @@
+.transaction {
+
+    min-width: 30rem;
+    max-width: 48rem;
+    min-height: 3rem;
+    margin: 1.4rem 0;
+    padding: .58rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1.4px solid #052b41;
+    border-left: 11px solid #6d1b1b;
+
+    @media (max-width: 512px)
+    {
+        min-width: 0;
+        max-width: 98%;
+        margin: 1.4rem auto;
+    }
+
+    &__details{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 1.4rem;
+        flex-wrap: wrap;
+    }
+
+    &--name{
+        font-weight: 400;
+        font-size: 1.48rem;
+        text-transform: lowercase;
+        letter-spacing: .04rem;
+        color: #092929;
+    }
+
+    &--amount{
+
+        font-family: "Madimi One", sans-serif;
+        font-weight: 400;
+        font-size: 1.3rem;
+        color: #421f08;
+    }
+
+    &--icon{
+
+        width: 1.6rem;
+        height: 1.6rem;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+}
+
+
+
+
+

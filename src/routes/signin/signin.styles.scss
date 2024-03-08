@@ -1,0 +1,88 @@
+.signin-form {
+
+    position: relative;
+    max-width: 30rem;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: 14rem;
+
+    @media (max-width:460px)
+    {
+        max-width: 94%;
+    }
+
+    &__field {
+
+        width: 100%;
+        
+    
+        &--label , &--input {
+    
+            display: block;
+            padding: .8rem;
+        }
+    
+        &--label {
+    
+            text-transform: lowercase;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: .31rem;
+            color: #113020;
+        }
+    
+        &--input{
+            width: 100%;
+            outline: none;
+            border:1px solid #bbbbbb;
+            transition: all 0.1s ease-in;
+            border-radius: .4rem;
+            
+            &::placeholder {
+    
+                font-size: 1rem;
+                font-weight: 300;
+                letter-spacing: .14rem;
+                text-transform: lowercase;
+            }
+    
+            &:focus{
+    
+                border: 2px solid #2e8559;
+                box-shadow: 0 .4rem .8rem #c5c5c5;
+            }
+        }
+    }
+
+    &__button {
+
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        margin: 1.8rem 0;
+        padding:.78rem;
+        cursor: pointer;
+        text-transform: lowercase;
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: .14rem;
+        background: #e1fffa;
+        color: #0b3342;
+        border: 1.4px solid #0d2d30;
+        transition: all 0.2s ease-in;
+    
+        &:hover{
+            border: 1px solid #123a35;
+            background: #0b3342;
+            color: #e1fffa;
+        }
+    
+        &--arrow {
+            height: 1.8rem;
+            margin-left:1rem;
+        }
+    }
+}
