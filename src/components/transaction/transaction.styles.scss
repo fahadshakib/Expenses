@@ -8,13 +8,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1.4px solid #052b41;
-    border-left: 11px solid #6d1b1b;
+    border: 1.8px solid #031722;
+    border-left: 8px solid #0a2733;
 
     @media (max-width: 512px)
     {
-        min-width: 0;
-        max-width: 98%;
+        max-width: 100%;
         margin: 1.4rem auto;
     }
 
@@ -29,18 +28,18 @@
 
     &--name{
         font-weight: 400;
-        font-size: 1.48rem;
+        font-size: 1.4rem;
         text-transform: lowercase;
-        letter-spacing: .04rem;
-        color: #092929;
+        letter-spacing: .14rem;
+        color: #031818;
     }
 
     &--amount{
 
         font-family: "Madimi One", sans-serif;
         font-weight: 400;
-        font-size: 1.3rem;
-        color: #421f08;
+        font-size: 1.4rem;
+        color: #021118;
     }
 
     &--icon{

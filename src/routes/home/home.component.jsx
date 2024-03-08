@@ -6,13 +6,13 @@ import Transactions from '../../components/transactions/transactions.component';
 
 const Home = () => {
 
-    const {user } = useUserContext();
+    const {user} = useUserContext();
 
     return (
 
         <div className= 'home'>
             <TransactionForm />
-            {user && <Transactions />}
+            {user && <Transactions/>}
         </div>
     )
 }

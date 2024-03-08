@@ -1,5 +1,6 @@
+import {v4 as uuid} from 'uuid';
 import { initializeApp } from "firebase/app";
-import {getFirestore,doc,getDoc,setDoc} from 'firebase/firestore';
+import {getFirestore,doc,getDoc,setDoc,collection, deleteDoc} from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {getAuth, createUserWithEmailAndPassword,
         signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth';
@@ -121,8 +122,34 @@ export const authStateChangedListener = (fn) => onAuthStateChanged(auth, fn);
 
 
 
+export const createTransaction = async (uid, transactionData) => {
+
+  if (!uid || !transactionData) return;
+
+  try {
+
+    const transactionCollectionRef = collection(db, COLLECTION_TRANSACTION);
+    const id = uuid();
+    await setDoc(doc(transactionCollectionRef, id), { uid, ...transactionData });
+
+  } catch (error) {
+
+    handleError(error);
+
+  }
+};
 
 
 
 
+export const deleteTransactionFromFirestore = async (transactionId) => {
 
+    try {
+
+        await deleteDoc(doc(db, COLLECTION_TRANSACTION, transactionId));
+
+    } catch (error) {
+
+        handleError(error);
+    }
+};

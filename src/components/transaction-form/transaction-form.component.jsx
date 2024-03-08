@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import './transaction-form.styles.scss';
 import { useUserContext } from '../../context/user.context';
+import {createTransaction} from '../../utilities/firebase.utilities';
 import Message from '../../components/message/message.component';
 import RightArrow from '../../assets/arrow-right-solid.svg';
 
 const TransactionForm = () => {
 
-    const { user } = useUserContext();
+    const {uid, user } = useUserContext();
     const [warning, setWarning] = useState('');
     const [hideWarning, setHideWarning] = useState(true);
 
@@ -33,12 +34,14 @@ const TransactionForm = () => {
                 return;
             }
 
-            console.log(transaction , amount);
+            const data = {transaction , amount};
+            await createTransaction(uid , data);
             setData({ transaction: '', amount: '' });
 
         } catch (error) {
+            console.log(error.message)
 
-            setWarning(error.message);
+            setWarning(`😢 ${error.message}`);
         }
     };
 

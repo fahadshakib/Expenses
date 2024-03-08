@@ -55,6 +55,8 @@ const Registration = () => {
 
                 setHideSuccess(true);
                 setSuccess(''); 
+                navigate('/');
+                forceRefresh();
 
             }, 2000);
             
@@ -99,10 +101,6 @@ const Registration = () => {
                 const data = {name: formData.name , email: formData.email , password: formData.password , photo: formData.photo};
                 await createUserFromEmailAndPassword(data); 
                 setSuccess('🎉 account creation completed');
-                setTimeout(()=>{
-                    navigate('/');
-                },2400)  
-                forceRefresh();
                 
             } catch(err){setWarning(`😐 ${err.message}`)}
         }

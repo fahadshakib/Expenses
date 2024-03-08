@@ -1,14 +1,7 @@
 import './transaction.styles.scss';
 import TrashCan from '../../assets/trash-can.svg';
 
-const Transaction = () => {
-
-
-    const handleDelete = async (e) => {
-
-        const id = e.target.getAttribute('data-id');
-        console.log(id);
-    }
+const Transaction = ({ transaction , amount , deleteTransaction}) => {
 
 
     return (
@@ -16,14 +9,14 @@ const Transaction = () => {
         <div className="transaction">
 
             <p className="transaction--name">
-                transaction details
+                {transaction}
             </p>
             
             <div className="transaction__details">
                 <p className="transaction--amount">
-                    $ 20
+                    $ {amount}
                 </p>
-                <img src={TrashCan} alt="delete transaction" data-id={1234} className='transaction--icon' onClick={handleDelete}/>
+                <img src={TrashCan} alt="delete transaction"  className='transaction--icon' onClick={deleteTransaction}/>
             </div>
             
         </div>
