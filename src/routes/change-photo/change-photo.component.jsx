@@ -5,6 +5,7 @@ import {useUserContext} from '../../context/user.context';
 import {updateUserPhoto} from '../../utilities/firebase.utilities';
 import Message from '../../components/message/message.component';
 import RightArrow from '../../assets/arrow-right-solid.svg';
+import ButtonGoBack from '../../components/button/button.component';
 
 const ChangePhoto = () => {
 
@@ -115,6 +116,8 @@ const ChangePhoto = () => {
 
         {!hideWarning  && <Message type='error' msg={warning}/>}
         {!hideSuccess &&  <Message type='success' msg={success}/>}
+
+        <ButtonGoBack/>
 
         </>
     )

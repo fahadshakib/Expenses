@@ -4,6 +4,7 @@ import './change-password.styles.scss';
 import {useUserContext} from '../../context/user.context';
 import {updateUserPassword} from '../../utilities/firebase.utilities';
 import Message from '../../components/message/message.component';
+import ButtonGoBack from '../../components/button/button.component';
 import RightArrow from '../../assets/arrow-right-solid.svg';
 
 const ChangePassword = () => {
@@ -136,6 +137,8 @@ const ChangePassword = () => {
 
         {!hideWarning  && <Message type='error' msg={warning}/>}
         {!hideSuccess &&  <Message type='success' msg={success}/>}
+
+        <ButtonGoBack/>
 
         </>
     )

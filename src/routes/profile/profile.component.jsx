@@ -2,6 +2,7 @@ import {useState, useEffect } from 'react';
 import './profile.styles.scss';
 import {useUserContext} from '../../context/user.context';
 import UserDetails from '../../components/user-details/user-details.component';
+import Dropdown from '../../components/dropdown/dropdown.component';
 
 
 const Profile = () => {
@@ -28,6 +29,7 @@ const Profile = () => {
 
         <div className='profile'>
             <UserDetails name={name} email={email} photo={photo} joinedOn={joinedOn}/>
+            <Dropdown/>
         </div>
     )
 }

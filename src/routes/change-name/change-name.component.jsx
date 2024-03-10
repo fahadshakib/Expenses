@@ -4,6 +4,7 @@ import './change-name.styles.scss';
 import {useUserContext} from '../../context/user.context';
 import {updateUserName} from '../../utilities/firebase.utilities';
 import Message from '../../components/message/message.component';
+import ButtonGoBack from '../../components/button/button.component';
 import RightArrow from '../../assets/arrow-right-solid.svg';
 
 const ChangeUserName = () => {
@@ -105,6 +106,8 @@ const ChangeUserName = () => {
 
         {!hideWarning  && <Message type='error' msg={warning}/>}
         {!hideSuccess &&  <Message type='success' msg={success}/>}
+
+        <ButtonGoBack/>
 
         </>
     )

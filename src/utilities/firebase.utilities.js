@@ -1,9 +1,9 @@
 import {v4 as uuid} from 'uuid';
 import { initializeApp } from "firebase/app";
-import {getFirestore,doc,getDoc,setDoc,collection, deleteDoc} from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {getFirestore,doc,getDoc,setDoc,collection, deleteDoc, updateDoc} from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import {getAuth, createUserWithEmailAndPassword,
-        signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth';
+        signInWithEmailAndPassword, signOut, onAuthStateChanged, EmailAuthProvider, reauthenticateWithCredential, updatePassword} from 'firebase/auth';
 
 import handleError from './errors.utilities';
 import compressImage from "./compress-image.utilities";
@@ -37,7 +37,10 @@ export const uploadUserPhoto = async (photo, name) => {
       
   try {
       
-      const storageReference = ref(storage , 'photos/' + name + photo.name);
+      let ext = photo.name.split('.');
+      ext = ext[ext.length -1];
+      name = name.split(' ').join('-') + '.' + ext;
+      const storageReference = ref(storage , 'photos/' + name );
       const compressedPhoto = await compressImage(photo);
       await uploadBytes(storageReference , compressedPhoto);
       const url = await getDownloadURL(storageReference);
@@ -116,6 +119,61 @@ export const getUserDataFromFireStore = async (user) => {
     } catch (error){handleError(error)}
 }
 
+
+export const updateUserName = async (uid , newName) => {
+
+      if(!uid || !newName) return;
+
+      try {
+
+        const reference = doc(db, COLLECTION_USER, uid);
+        const snapshot = await getDoc(reference);
+  
+        if(snapshot.exists()) {
+  
+           await updateDoc(reference , {name : newName});
+        }
+      } catch(error){handleError(error)};
+
+}
+
+export const updateUserPassword= async (currentPassword , newPassword) => {
+
+  if(!currentPassword || !newPassword) return;
+
+  try {
+
+    const user = auth.currentUser;
+    const credential = EmailAuthProvider.credential(user.email , currentPassword);
+    await reauthenticateWithCredential(user , credential);
+    await updatePassword(user , newPassword);
+
+    }catch(error){handleError(error)};
+}
+
+export const updateUserPhoto = async (uid , name , photo) => {
+
+      if(!uid || !name || !photo) return;
+
+      try {
+
+        const reference = doc(db, COLLECTION_USER, uid);
+        const snapshot = await getDoc(reference);
+        if(snapshot.exists()){
+
+          const currentPhoto = snapshot.data.photo;
+          if(currentPhoto){
+
+            const reference = ref(storage , currentPhoto);
+            await deleteObject(reference);
+          }
+
+          const url = await uploadUserPhoto(photo , name);
+          await updateDoc(reference , {photo : url});
+        }
+
+      } catch (error) {handleError(error)};
+}
 
 export const authStateChangedListener = (fn) => onAuthStateChanged(auth, fn);
 
