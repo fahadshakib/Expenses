@@ -1,14 +1,15 @@
-##### Expenses - A expense tracker application
-
-
->**React**
-
->**React router**
-
->**Context API**
-
->**SASS**
-
->**Firebase**
+###### Expenses - A expense tracker application
 ***
-[watch the site here](https://expenses-fhs.netlify.app/)
+
+- ***keep track of your expenses***
+
+- ***add expenses***
+
+- ***delete expenses***
+
+- ***register using email and password***
+
+- ***update user information***
+
+
+**[watch the site here](https://expenses-fhs.netlify.app/)**
