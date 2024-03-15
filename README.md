@@ -11,4 +11,4 @@
 
 >**Firebase**
 ***
-[live preview](https://frolicking-griffin-0330ff.netlify.app/)
+[watch the site here](https://expenses-fhs.netlify.app/)
